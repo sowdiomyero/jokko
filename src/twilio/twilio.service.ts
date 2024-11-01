@@ -42,18 +42,18 @@ export class TwilioService {
 
 
 
-  async createMessage(message: string, destination: string) {
+  async createMessage(message: string, to: string) {
 
     const twilio = require("twilio"); // Or, for ESM: import twilio from "twilio";
-
+    const from = process.env.TWILIO_WHATSAPP_NUMBER;
     const accountSid = process.env.TWILIO_ACCOUNT_SID 
     const authToken = process.env.TWILIO_AUTH_TOKEN 
     const client = twilio(accountSid, authToken);
     
     const whatsAppMessage = await client.messages.create({
+      from,
+      to,
       body: message,
-      from: "whatsapp:+14155238886",
-      to: "whatsapp:"+destination,
     });
   
     console.log(whatsAppMessage.body);
