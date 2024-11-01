@@ -11,11 +11,11 @@ export class TwilioController {
         const to = body.To; // Numéro de destination (format: whatsapp:+123456789)
         const messageBody = body.Body; // Contenu du message texte reçu
 
-        console.log(`Message reçu de ${from}: ${messageBody}`);
+        console.log(`Message reçu de => ${from} à destination de => ${to}: ${messageBody}`);
 
         const message = "Depuis l'application nestjs, je te reponds. Bientôt j'analyserai tes messages afin de mieux t'aider..."
 
-        this.twilioService.createMessage(message, from)
+        this.twilioService.createMessage(message, to)
         return { message };
 
     }
