@@ -13,9 +13,9 @@ export class TwilioController {
 
         console.log(`Message reçu de ${from}: ${messageBody}`);
 
-        const message = "Depuis l'application nestjs, je te repond"
+        const message = "Depuis l'application nestjs, je te reponds. Bientôt j'analyserai tes messages afin de mieux t'aider..."
 
-        this.twilioService.createMessage(message)
+        this.twilioService.createMessage(message, from)
         return { message };
 
     }
